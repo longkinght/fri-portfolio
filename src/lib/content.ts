@@ -1,8 +1,8 @@
 /**
- * [INPUT]: fs, path (node builtins), ./markdown (renderMarkdown)
+ * [INPUT]: fs, path (node builtins), ./markdown (renderMarkdown — async)
  * [OUTPUT]: Entry interface, getEntries(), getEntry(), getSlugs()
  * [POS]: lib/content — content pipeline, reads markdown from content/ dir,
- *        parses frontmatter, returns rendered HTML entries
+ *        parses frontmatter, returns rendered HTML entries with link previews
  * [PROTOCOL]: update this header on change, then check CLAUDE.md
  */
 
@@ -67,18 +67,20 @@ export async function getEntries(
     .sort()
     .reverse();
 
-  return files.map((f) => {
-    const raw = fs.readFileSync(path.join(dir, f), "utf8");
-    const { data, content } = parseFrontmatter(raw);
-    const slug = f.replace(/\.md$/, "");
-    return {
-      slug,
-      title: data.title || slug,
-      date: data.date || slug,
-      summary: data.summary,
-      content: renderMarkdown(content),
-    };
-  });
+  return Promise.all(
+    files.map(async (f) => {
+      const raw = fs.readFileSync(path.join(dir, f), "utf8");
+      const { data, content } = parseFrontmatter(raw);
+      const slug = f.replace(/\.md$/, "");
+      return {
+        slug,
+        title: data.title || slug,
+        date: data.date || slug,
+        summary: data.summary,
+        content: await renderMarkdown(content),
+      };
+    }),
+  );
 }
 
 export async function getEntry(
@@ -95,7 +97,7 @@ export async function getEntry(
     title: data.title || slug,
     date: data.date || slug,
     summary: data.summary,
-    content: renderMarkdown(content),
+    content: await renderMarkdown(content),
   };
 }
 
