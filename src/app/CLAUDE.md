@@ -5,6 +5,8 @@
 
 layout.tsx: Root shell — `<html>` + `<body>`, Google Fonts CDN link, global CSS import, metadata (title, favicon)
 page.tsx: Homepage — viewport-locked 3-column dashboard grid assembling all `@/components/home/*` components
+diary/page.tsx: Diary list page — SSG, renders all diary entries via `EntryList`
+diary/[slug]/page.tsx: Single diary entry page — SSG with `generateStaticParams`, renders one entry via `EntryPage`
 
 ## Architecture Notes
 
