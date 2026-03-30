@@ -58,7 +58,7 @@ export function SystemHeader({ totalEntries, totalWords }: SystemHeaderProps) {
             Friday
           </h1>
           <p className="text-[9px] md:text-[10px] font-tech text-pink-400/80 tracking-[0.15em] md:tracking-[0.2em]">
-            INTELLIGENT ASSISTANT V2026.2.1
+            INTELLIGENT ASSISTANT V3.28
           </p>
         </div>
       </div>

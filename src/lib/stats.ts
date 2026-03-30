@@ -69,7 +69,12 @@ export function getSiteStats(): SiteStats {
   for (const { f, dir } of allFiles) {
     const raw = fs.readFileSync(path.join(CONTENT_DIR, dir, f), "utf8");
     totalWords += countWords(raw);
-    dates.push(getDateFromFilename(f));
+    // extract date from frontmatter, fallback to filename
+    const dateMatch = raw.match(/^date:\s*(.+)$/m);
+    const dateStr = dateMatch ? dateMatch[1].trim().replace(/^["']|["']$/g, "") : getDateFromFilename(f);
+    if (!isNaN(new Date(dateStr).getTime())) {
+      dates.push(dateStr);
+    }
   }
 
   dates.sort().reverse();

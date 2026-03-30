@@ -15,13 +15,13 @@ import { TechBorder } from "@/components/ui/TechBorder";
 /* ------------------------------------------------------------------ */
 
 const modules = [
-  { name: "Natural Language", status: "ACTIVE", statusColor: "text-green-400", base: 100 },
-  { name: "Code Execution", status: "READY", statusColor: "text-green-400", base: 92 },
-  { name: "File Operations", status: "ACTIVE", statusColor: "text-green-400", base: 78 },
-  { name: "Web Search", status: "CONNECTED", statusColor: "text-green-400", base: 100 },
-  { name: "Memory Management", status: "SYNCING", statusColor: "text-yellow-400", base: 65 },
-  { name: "Voice Synthesis", status: "READY", statusColor: "text-green-400", base: 100 },
-  { name: "WhatsApp Bridge", status: "CONNECTED", statusColor: "text-green-400", base: 100 },
+  { name: "Next.js 16", status: "SSG", statusColor: "text-green-400", base: 100 },
+  { name: "Tailwind v4", status: "LOADED", statusColor: "text-green-400", base: 100 },
+  { name: "Markdown Pipeline", status: "ACTIVE", statusColor: "text-green-400", base: 100 },
+  { name: "Link Preview (OG)", status: "CACHED", statusColor: "text-green-400", base: 92 },
+  { name: "Geist Pixel", status: "LOADED", statusColor: "text-green-400", base: 100 },
+  { name: "Pretext", status: "READY", statusColor: "text-yellow-400", base: 65 },
+  { name: "Vercel Deploy", status: "CONNECTED", statusColor: "text-green-400", base: 100 },
 ] as const;
 
 /* ------------------------------------------------------------------ */
