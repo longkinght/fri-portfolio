@@ -39,14 +39,8 @@ export function CoreDirectives() {
   return (
     <TechBorder className="p-5 flex-1 min-h-0 flex flex-col overflow-hidden">
       {/* ---- Title ---- */}
-      <h2 className="text-lg font-bold font-vt323 text-pink-400 mb-5 flex items-center gap-2 shrink-0">
-        <img
-          src="https://unpkg.com/pixelarticons@1.8.1/svg/shield.svg"
-          className="pa-icon w-4 h-4 inline-block"
-          alt=""
-          aria-hidden="true"
-        />
-        CORE_DIRECTIVES
+      <h2 className="text-sm font-vt323 text-pink-400 mb-4 tracking-widest shrink-0">
+        ┌ CORE_DIRECTIVES
       </h2>
 
       {/* ---- Directive cards ---- */}

@@ -61,28 +61,23 @@ export function ActiveModules() {
 
   return (
     <TechBorder className="p-5 flex-1 overflow-hidden flex flex-col">
-      <h2 className="text-lg font-bold font-vt323 text-pink-400 mb-5 flex items-center gap-2">
-        <img
-          src="https://unpkg.com/pixelarticons@1.8.1/svg/grid.svg"
-          className="pa-icon w-4 h-4 inline-block"
-          alt=""
-          aria-hidden="true"
-        />
-        ACTIVE_MODULES
+      <h2 className="text-sm font-vt323 text-pink-400 mb-4 tracking-widest">
+        ┌ ACTIVE_MODULES
       </h2>
 
-      <div className="custom-scroll overflow-y-auto pr-2 space-y-3 flex-1">
+      <div className="custom-scroll overflow-y-auto pr-2 space-y-2.5 flex-1">
         {modules.map((mod, i) => (
           <div key={mod.name} className="group cursor-pointer">
             <div className="flex items-center justify-between mb-1">
               <span className="text-sm font-vt323 group-hover:text-pink-300 transition-colors">
+                <span className="text-gray-500 mr-1.5">│</span>
                 {mod.name}
               </span>
-              <span className={`text-[10px] font-tech ${mod.statusColor}`}>
-                {mod.status}
+              <span className={`text-[10px] font-vt323 ${mod.statusColor} tracking-wider`}>
+                [{mod.status}]
               </span>
             </div>
-            <div className="progress-bar-bg">
+            <div className="progress-bar-bg ml-4">
               <div
                 ref={(el) => { barsRef.current[i] = el; }}
                 className="progress-bar-fill module-bar"

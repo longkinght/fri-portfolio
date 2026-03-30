@@ -36,30 +36,19 @@ const sayings = [
 export function IdentityMatrix() {
   return (
     <TechBorder className="p-5">
-      <h2 className="text-lg font-bold font-vt323 text-pink-400 mb-5 flex items-center gap-2">
-        <img
-          src="https://unpkg.com/pixelarticons@1.8.1/svg/server.svg"
-          className="pa-icon w-4 h-4 inline-block"
-          alt=""
-          aria-hidden="true"
-        />
-        IDENTITY_MATRIX
+      <h2 className="text-sm font-vt323 text-pink-400 mb-4 tracking-widest">
+        ┌ IDENTITY_MATRIX
       </h2>
 
-      <div className="space-y-4">
-        {specs.map(([label, value], i) => (
-          <div
-            key={label}
-            className={`flex justify-between items-center text-sm${
-              i < specs.length - 1
-                ? " border-b border-pink-500/25 pb-3 pt-0.5"
-                : " pb-3 pt-0.5"
-            }`}
-          >
-            <span className="text-gray-400">{label}</span>
-            <span className="font-bold font-vt323 text-pink-300">{value}</span>
+      <div className="font-vt323 text-sm space-y-1.5">
+        {specs.map(([label, value]) => (
+          <div key={label} className="flex items-baseline gap-2">
+            <span className="text-gray-500 shrink-0">│</span>
+            <span className="text-gray-400 shrink-0 w-24 text-xs tracking-wide">{label}</span>
+            <span className="text-pink-300">{value}</span>
           </div>
         ))}
+        <div className="text-gray-500 text-xs opacity-30">└──────────────────────</div>
       </div>
 
       <TypeWriter sayings={sayings} />

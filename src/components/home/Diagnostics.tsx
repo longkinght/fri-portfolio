@@ -28,51 +28,37 @@ const services = [
 export function Diagnostics() {
   return (
     <TechBorder className="p-6 md:p-5">
-      {/* Title */}
-      <h2 className="text-lg font-bold font-vt323 text-pink-400 mb-5 flex items-center gap-2">
-        <img
-          src="https://unpkg.com/pixelarticons@1.8.1/svg/chart.svg"
-          className="pa-icon w-4 h-4 inline-block"
-          alt=""
-          aria-hidden="true"
-        />
-        DIAGNOSTICS
+      <h2 className="text-sm font-vt323 text-pink-400 mb-4 tracking-widest">
+        ┌ DIAGNOSTICS
       </h2>
 
       {/* Stat boxes */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-        <div className="bg-pink-950/10 p-4 text-center">
-          <div className="text-[10px] text-gray-400 uppercase mb-1.5">
-            Latency
+      <div className="grid grid-cols-2 gap-3 mb-5">
+        <div className="border border-pink-500/15 p-3 text-center">
+          <div className="text-[9px] font-vt323 text-gray-500 tracking-widest mb-1">
+            LATENCY
           </div>
-          <div className="text-xl font-bold font-vt323 text-pink-300">
-            47ms
-          </div>
+          <div className="text-lg font-vt323 text-pink-300">47ms</div>
         </div>
-        <div className="bg-pink-950/10 p-4 text-center">
-          <div className="text-[10px] text-gray-400 uppercase mb-1.5">
-            Uptime
+        <div className="border border-pink-500/15 p-3 text-center">
+          <div className="text-[9px] font-vt323 text-gray-500 tracking-widest mb-1">
+            UPTIME
           </div>
-          <div className="text-xl font-bold font-vt323 text-pink-300">
-            99.97%
-          </div>
+          <div className="text-lg font-vt323 text-pink-300">99.97%</div>
         </div>
       </div>
 
-      {/* Network traffic bars */}
       <NetworkTraffic />
 
       {/* Service status list */}
-      <div className="mt-5 space-y-4 font-tech text-[10px] text-pink-300/70">
+      <div className="mt-4 space-y-1 font-vt323 text-[11px] text-pink-300/70">
         {services.map((svc) => (
-          <div
-            key={svc.name}
-            className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-0.5 sm:gap-0 py-1.5 sm:py-0 border-b border-pink-500/10 sm:border-0 last:border-0"
-          >
-            <span>&gt; {svc.name}</span>
-            <span className={svc.color}>{svc.status}</span>
+          <div key={svc.name} className="flex justify-between items-center">
+            <span className="text-gray-500">├─ {svc.name}</span>
+            <span className={`${svc.color} tracking-wider`}>[{svc.status}]</span>
           </div>
         ))}
+        <div className="text-gray-500 opacity-30">└────────────────────</div>
       </div>
     </TechBorder>
   );

@@ -65,21 +65,21 @@ export function SystemHeader() {
       {/* --- Left: logo + subtitle --- */}
       <div className="flex items-center gap-2 md:gap-4 min-w-0">
         <div className="min-w-0">
-          <h1 className="text-xl md:text-2xl font-thin font-workbench tracking-widest truncate">
+          <h1 className="text-xl md:text-2xl font-thin font-vt323 tracking-widest truncate">
             Friday
           </h1>
-          <p className="text-[9px] md:text-[10px] font-tech text-pink-400/80 tracking-[0.15em] md:tracking-[0.2em]">
-            INTELLIGENT ASSISTANT V2026.2.1
+          <p className="text-[9px] md:text-[10px] font-vt323 text-pink-400/80 tracking-[0.15em] md:tracking-[0.2em]">
+            INTELLIGENT ASSISTANT V3.28
           </p>
         </div>
       </div>
 
       {/* --- Right: status / gauges / clock --- */}
-      <div className="flex items-center gap-3 md:gap-12 font-tech text-[10px] md:text-xs text-pink-400/85 shrink-0">
+      <div className="flex items-center gap-3 md:gap-12 font-vt323 text-[10px] md:text-xs text-pink-400/85 shrink-0">
         {/* status dot */}
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shrink-0" />
-          <span className="hidden sm:inline">SYSTEM ONLINE</span>
+          <span className="hidden sm:inline font-vt323 tracking-wider">[ONLINE]</span>
         </div>
 
         {/* CPU gauge */}
