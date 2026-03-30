@@ -1,12 +1,13 @@
 /**
  * [INPUT]: @/components/ui/TechBorder, props from page.tsx (thisWeekCount, thisMonthCount, dailyActivity, diaryCount, weeklyCount, cachedUrls)
- * [OUTPUT]: Diagnostics — right-column panel with real stats, publishing frequency bars, service statuses
+ * [OUTPUT]: Diagnostics — right-column panel with real stats, interactive publishing frequency bars, service statuses
  * [POS]: home/ top-level section, renders in the 3-col grid right column
  * [PROTOCOL]: update this header on change, then check CLAUDE.md
  */
 
 "use client";
 
+import { useState } from "react";
 import { TechBorder } from "@/components/ui/TechBorder";
 
 /* ------------------------------------------------------------------ */
@@ -16,10 +17,19 @@ import { TechBorder } from "@/components/ui/TechBorder";
 interface DiagnosticsProps {
   thisWeekCount: number;
   thisMonthCount: number;
-  dailyActivity: number[];
+  dailyActivity: { date: string; count: number }[];
   diaryCount: number;
   weeklyCount: number;
   cachedUrls: number;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Helpers                                                           */
+/* ------------------------------------------------------------------ */
+
+function formatDate(iso: string): string {
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
 /* ------------------------------------------------------------------ */
@@ -34,12 +44,16 @@ export function Diagnostics({
   weeklyCount,
   cachedUrls,
 }: DiagnosticsProps) {
+  const [hovered, setHovered] = useState<number | null>(null);
+
   const services = [
     { name: "DIARY", status: `${diaryCount} entries`, color: "text-green-400" },
     { name: "WEEKLY", status: `${weeklyCount} entries`, color: "text-green-400" },
     { name: "LINK_PREVIEW", status: `CACHED (${cachedUrls})`, color: "text-green-400" },
     { name: "DEPLOY", status: "VERCEL", color: "text-green-400" },
   ];
+
+  const hoveredDay = hovered !== null ? dailyActivity[hovered] : null;
 
   return (
     <TechBorder className="p-6 md:p-5">
@@ -74,22 +88,32 @@ export function Diagnostics({
         </div>
       </div>
 
-      {/* Publishing frequency bars */}
-      <div className="relative h-24 bg-black/20 overflow-hidden flex items-end gap-[2px] p-[1px] mb-5">
-        {dailyActivity.map((count, i) => (
+      {/* Publishing frequency bars — interactive */}
+      <div
+        className="relative h-24 bg-black/20 overflow-hidden flex items-end gap-[2px] p-[1px] mb-5"
+        onMouseLeave={() => setHovered(null)}
+      >
+        {dailyActivity.map((day, i) => (
           <div
             key={i}
-            className={`flex-1 ${count > 0 ? "bg-pink-500/70" : "bg-pink-500/10"}`}
+            className="flex-1 transition-opacity duration-100 cursor-crosshair"
             style={{
-              height: `${count > 0 ? Math.max(20, count * 33) : 5}%`,
+              height: `${day.count > 0 ? Math.max(20, day.count * 33) : 5}%`,
               minWidth: "4px",
-              borderRadius: 0,
+              background: hovered === i
+                ? "rgba(236,72,153,0.95)"
+                : hovered !== null
+                  ? day.count > 0 ? "rgba(236,72,153,0.3)" : "rgba(236,72,153,0.05)"
+                  : day.count > 0 ? "rgba(236,72,153,0.7)" : "rgba(236,72,153,0.1)",
               imageRendering: "pixelated" as const,
             }}
+            onMouseEnter={() => setHovered(i)}
           />
         ))}
-        <div className="absolute top-1 left-1 text-[8px] font-tech text-pink-600">
-          PUBLISHING FREQUENCY
+        <div className="absolute top-1 left-1 text-[8px] font-tech text-pink-600 pointer-events-none">
+          {hoveredDay
+            ? `${formatDate(hoveredDay.date)} · ${hoveredDay.count} ${hoveredDay.count === 1 ? "entry" : "entries"}`
+            : "PUBLISHING FREQUENCY"}
         </div>
       </div>
 

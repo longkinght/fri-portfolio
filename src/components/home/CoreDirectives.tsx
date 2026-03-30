@@ -142,9 +142,8 @@ export function CoreDirectives() {
               className="p-1.5 text-pink-500 hover:text-white transition-all"
               aria-label="X (Twitter)"
             >
-              {/* pixel-art X logo — 24x24 grid to match pixelarticons */}
               <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M3 3h2v2H3V3zm4 4H5V5h2v2zm2 2H7V7h2v2zm2 2H9V9h2v2zm2 0h-2v2H9v2H7v2H5v2H3v2h2v-2h2v-2h2v-2h2v-2h2v2h2v2h2v2h2v2h2v-2h-2v-2h-2v-2h-2v-2h-2v-2zm2-2h-2v2h2V9zm2-2h-2v2h2V7zm2-2h-2v2h2V5zm2-2h-2v2h2V3z'/%3E%3C/svg%3E"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/x.svg"
                 className="pa-icon w-4 h-4 inline-block"
                 alt=""
                 aria-hidden="true"
@@ -157,9 +156,8 @@ export function CoreDirectives() {
               className="p-1.5 text-pink-500 hover:text-white transition-all"
               aria-label="LinkedIn"
             >
-              {/* pixel-art LinkedIn "in" — 24x24 grid to match pixelarticons */}
               <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M2 2h4v2H4v2H2V2zm0 6h4v14H2V8zm8 0h4v2h4v-2h4v14h-4v-8h-4v8H10V8z'/%3E%3C/svg%3E"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linkedin.svg"
                 className="pa-icon w-4 h-4 inline-block"
                 alt=""
                 aria-hidden="true"

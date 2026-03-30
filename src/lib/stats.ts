@@ -21,7 +21,7 @@ export interface SiteStats {
   lastEntryAge: string;
   thisWeekCount: number;
   thisMonthCount: number;
-  dailyActivity: number[];
+  dailyActivity: { date: string; count: number }[];
   cachedUrls: number;
 }
 
@@ -89,13 +89,13 @@ export function getSiteStats(): SiteStats {
 
   const daysSinceLaunch = Math.floor((now.getTime() - LAUNCH_DATE.getTime()) / 86400000);
 
-  // daily activity: last 30 days, each = entry count
-  const dailyActivity: number[] = [];
+  // daily activity: last 30 days, each = { date, count }
+  const dailyActivity: { date: string; count: number }[] = [];
   for (let i = 29; i >= 0; i--) {
     const day = new Date(now.getTime() - i * 86400000);
     const dayStr = day.toISOString().slice(0, 10);
     const count = dates.filter((d) => d === dayStr).length;
-    dailyActivity.push(count);
+    dailyActivity.push({ date: dayStr, count });
   }
 
   // count cached OG URLs
