@@ -29,7 +29,7 @@ export function EntryList({ entries, type, title, subtitle }: EntryListProps) {
   const rest = entries.slice(3);
 
   return (
-    <div className="min-h-screen bg-bg-dark">
+    <div className="min-h-screen" style={{ background: 'var(--bg-body)' }}>
       <div className="scanline-overlay" />
 
       <div className="mx-auto max-w-4xl px-5 py-12">

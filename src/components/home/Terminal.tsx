@@ -350,10 +350,10 @@ export function Terminal({ stats }: TerminalProps) {
       {/* Command input */}
       <div className="relative mt-3">
         {/* label sits on the border line */}
-        <span className="absolute -top-[7px] left-3 px-1.5 text-[9px] font-vt323 tracking-widest text-pink-500/70 bg-[var(--glass-bg)] z-10">
+        <span className="absolute -top-[7px] left-3 px-1.5 text-[9px] font-vt323 tracking-widest z-10" style={{ color: 'var(--text-accent-soft)', background: 'var(--bg-panel)' }}>
           COMMAND INPUT
         </span>
-        <div className="flex items-center border border-pink-500/25 bg-[#080818]/60 focus-within:border-pink-400/50 transition-colors">
+        <div className="flex items-center transition-colors" style={{ border: '1px solid var(--border-accent)', background: 'var(--bg-input)' }}>
           <span className="pl-3 text-xs font-vt323 text-neon-coral/50 select-none shrink-0">
             fri&gt;
           </span>

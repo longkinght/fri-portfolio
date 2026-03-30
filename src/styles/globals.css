@@ -41,7 +41,7 @@
 }
 
 /* --------------------------------------------------------------------------
- * CSS CUSTOM PROPERTIES — consumed by utility classes below
+ * CSS CUSTOM PROPERTIES — dark theme (default)
  * -------------------------------------------------------------------------- */
 
 :root {
@@ -51,6 +51,148 @@
   --bg-dark: #050510;
   --glass-border: rgba(236, 72, 153, 0.35);
   --glass-bg: rgba(15, 5, 15, 0.75);
+
+  /* semantic tokens — consumed everywhere */
+  --bg-body: #050510;
+  --bg-grid-line: rgba(236, 72, 153, 0.03);
+  --bg-panel: rgba(15, 5, 15, 0.75);
+  --bg-panel-hover-border: rgba(236, 72, 153, 0.5);
+  --bg-surface: rgba(236, 72, 153, 0.05);
+  --bg-input: rgba(8, 8, 24, 0.6);
+  --bg-bar-area: rgba(0, 0, 0, 0.2);
+
+  --text-primary: #fce7f3;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+  --text-accent: #ec4899;
+  --text-accent-soft: rgba(236, 72, 153, 0.7);
+  --text-heading: #fda4af;
+  --text-value: #f9a8d4;
+
+  --border-accent: rgba(236, 72, 153, 0.25);
+  --border-subtle: rgba(236, 72, 153, 0.10);
+
+  --header-bg: rgba(5, 5, 16, 0.9);
+  --gauge-track: #4a044e;
+  --gauge-fill: #f472b6;
+
+  --scanline-color: rgba(236, 72, 153, 0.03);
+  --scanner-color: rgba(251, 146, 60, 0.08);
+
+  --terminal-text: #a8b2c1;
+  --terminal-output: #c9d1d9;
+  --terminal-meta: #6e7681;
+  --terminal-user: #7ee787;
+  --terminal-fri: #fb923c;
+  --terminal-cursor-bg: #fb923c;
+
+  --scroll-track: rgba(0, 0, 0, 0.3);
+  --scroll-thumb: #ec4899;
+
+  --icon-filter: brightness(0) saturate(100%) invert(55%) sepia(90%) saturate(1200%) hue-rotate(310deg);
+  --icon-filter-white: brightness(0) invert(1);
+
+  --shimmer-base: rgba(236, 72, 153, 0.4);
+  --shimmer-peak: rgba(255, 200, 230, 1);
+
+  --ring-3: rgba(236, 72, 153, 0.4);
+  --ring-4: rgba(236, 72, 153, 0.3);
+  --ring-5: rgba(236, 72, 153, 0.2);
+
+  --diary-h1: #fda4af;
+  --diary-h2: #fdba74;
+  --diary-h3: #fda4af;
+  --diary-p: #d1d5db;
+  --diary-em: #f9a8d4;
+  --diary-strong: #fecdd3;
+  --diary-quote-border: #ec4899;
+  --diary-quote-text: #9ca3af;
+  --diary-code-bg: rgba(236, 72, 153, 0.1);
+  --diary-code-text: #fda4d4;
+  --diary-link: #f9a8d4;
+  --diary-link-underline: rgba(249, 168, 212, 0.4);
+  --diary-hr: rgba(236, 72, 153, 0.2);
+
+  --matrix-text: rgba(236, 72, 153, 0.10);
+  --matrix-bright: rgba(236, 72, 153, 0.19);
+}
+
+/* --------------------------------------------------------------------------
+ * LIGHT THEME — white bg, pink accents preserved
+ * -------------------------------------------------------------------------- */
+
+[data-theme="light"] {
+  --neon-pink: #db2777;
+  --neon-coral: #ea580c;
+  --neon-dim: #fce7f3;
+  --bg-dark: #fafafa;
+  --glass-border: rgba(219, 39, 119, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+
+  --bg-body: #fafafa;
+  --bg-grid-line: rgba(219, 39, 119, 0.04);
+  --bg-panel: rgba(255, 255, 255, 0.85);
+  --bg-panel-hover-border: rgba(219, 39, 119, 0.4);
+  --bg-surface: rgba(219, 39, 119, 0.06);
+  --bg-input: rgba(255, 255, 255, 0.8);
+  --bg-bar-area: rgba(219, 39, 119, 0.05);
+
+  --text-primary: #1f2937;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --text-dim: #9ca3af;
+  --text-accent: #db2777;
+  --text-accent-soft: rgba(219, 39, 119, 0.6);
+  --text-heading: #be185d;
+  --text-value: #db2777;
+
+  --border-accent: rgba(219, 39, 119, 0.2);
+  --border-subtle: rgba(219, 39, 119, 0.08);
+
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --gauge-track: #fce7f3;
+  --gauge-fill: #ec4899;
+
+  --scanline-color: rgba(219, 39, 119, 0.02);
+  --scanner-color: rgba(251, 146, 60, 0.04);
+
+  --terminal-text: #374151;
+  --terminal-output: #1f2937;
+  --terminal-meta: #9ca3af;
+  --terminal-user: #059669;
+  --terminal-fri: #ea580c;
+  --terminal-cursor-bg: #ea580c;
+
+  --scroll-track: rgba(219, 39, 119, 0.05);
+  --scroll-thumb: #ec4899;
+
+  --icon-filter: brightness(0) saturate(100%) invert(25%) sepia(90%) saturate(1800%) hue-rotate(310deg);
+  --icon-filter-white: brightness(0);
+
+  --shimmer-base: rgba(219, 39, 119, 0.3);
+  --shimmer-peak: rgba(219, 39, 119, 0.9);
+
+  --ring-3: rgba(219, 39, 119, 0.2);
+  --ring-4: rgba(219, 39, 119, 0.15);
+  --ring-5: rgba(219, 39, 119, 0.1);
+
+  --diary-h1: #be185d;
+  --diary-h2: #c2410c;
+  --diary-h3: #be185d;
+  --diary-p: #374151;
+  --diary-em: #db2777;
+  --diary-strong: #9d174d;
+  --diary-quote-border: #ec4899;
+  --diary-quote-text: #6b7280;
+  --diary-code-bg: rgba(219, 39, 119, 0.08);
+  --diary-code-text: #be185d;
+  --diary-link: #db2777;
+  --diary-link-underline: rgba(219, 39, 119, 0.3);
+  --diary-hr: rgba(219, 39, 119, 0.15);
+
+  --matrix-text: rgba(219, 39, 119, 0.08);
+  --matrix-bright: rgba(219, 39, 119, 0.18);
 }
 
 /* --------------------------------------------------------------------------
@@ -70,13 +212,14 @@
  * -------------------------------------------------------------------------- */
 
 body {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-body);
   background-image:
-    linear-gradient(rgba(236, 72, 153, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(236, 72, 153, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--bg-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px);
   background-size: 40px 40px;
-  color: #fce7f3;
+  color: var(--text-primary);
   font-family: var(--font-geist), 'Geist', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* --------------------------------------------------------------------------
@@ -114,18 +257,18 @@ body {
   width: 1rem;
   height: 1rem;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(55%) sepia(90%) saturate(1200%) hue-rotate(310deg);
+  filter: var(--icon-filter);
 }
 
-.pa-icon.text-white { filter: brightness(0) invert(1); }
-.pa-icon.text-pink-500 { filter: brightness(0) saturate(100%) invert(55%) sepia(90%) saturate(1200%) hue-rotate(310deg); }
+.pa-icon.text-white { filter: var(--icon-filter-white); }
+.pa-icon.text-pink-500 { filter: var(--icon-filter); }
 
 /* --------------------------------------------------------------------------
  * GLASS PANEL
  * -------------------------------------------------------------------------- */
 
 .glass-panel {
-  background: var(--glass-bg);
+  background: var(--bg-panel);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   position: relative;
@@ -133,7 +276,7 @@ body {
 }
 
 .glass-panel:hover {
-  border-color: rgba(236, 72, 153, 0.5);
+  border-color: var(--bg-panel-hover-border);
 }
 
 /* --------------------------------------------------------------------------
@@ -193,7 +336,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent 50%, rgba(236, 72, 153, 0.03) 51%);
+  background: linear-gradient(to bottom, transparent 50%, var(--scanline-color) 51%);
   background-size: 100% 4px;
   z-index: 50;
 }
@@ -202,7 +345,7 @@ body {
   position: absolute;
   width: 100%;
   height: 200px;
-  background: linear-gradient(to bottom, transparent, rgba(251, 146, 60, 0.08), transparent);
+  background: linear-gradient(to bottom, transparent, var(--scanner-color), transparent);
   animation: scanline 8s linear infinite;
   pointer-events: none;
   z-index: 40;
@@ -239,8 +382,6 @@ body {
 
 /* ---- neon shimmer — thinking/status light sweep ---- */
 .neon-shimmer {
-  --shimmer-base: rgba(236, 72, 153, 0.4);
-  --shimmer-peak: rgba(255, 200, 230, 1);
   background: linear-gradient(
     90deg,
     var(--shimmer-base) 0%,
@@ -272,21 +413,21 @@ body {
 .arc-ring-3 {
   width: 270px;
   height: 270px;
-  border: 1px dashed rgba(236, 72, 153, 0.4);
+  border: 1px dashed var(--ring-3);
   animation: rotate-rev 12s linear infinite;
 }
 
 .arc-ring-4 {
   width: 330px;
   height: 330px;
-  border: 2px solid rgba(236, 72, 153, 0.3);
+  border: 2px solid var(--ring-4);
   animation: rotate-slow 20s linear infinite;
 }
 
 .arc-ring-5 {
   width: 390px;
   height: 390px;
-  border: 1px solid rgba(236, 72, 153, 0.2);
+  border: 1px solid var(--ring-5);
   animation: stutter-ring 2.4s steps(1) infinite;
 }
 
@@ -295,7 +436,7 @@ body {
  * -------------------------------------------------------------------------- */
 
 .progress-bar-bg {
-  background: rgba(236, 72, 153, 0.15);
+  background: var(--bg-surface);
   height: 4px;
   width: 100%;
 }
@@ -353,6 +494,13 @@ body {
   animation: quote-trail 2.5s ease-in-out infinite;
 }
 
+[data-theme="light"] #quote-text {
+  text-shadow:
+    0.5px 0 1px rgba(219, 39, 119, 0.3),
+    1px 0 2px rgba(219, 39, 119, 0.2),
+    0 0.5px 1px rgba(219, 39, 119, 0.1);
+}
+
 /* --------------------------------------------------------------------------
  * TERMINAL OUTPUT
  * -------------------------------------------------------------------------- */
@@ -362,18 +510,18 @@ body {
   font-size: 15px;
   line-height: 1.5;
   padding: 0;
-  color: #a8b2c1;
+  color: var(--terminal-text);
 }
 
-.terminal-output .term-prompt-user { color: #7ee787; }
-.terminal-output .term-prompt-fri { color: #fb923c; }
-.terminal-output .term-output { color: #c9d1d9; }
-.terminal-output .term-meta { color: #6e7681; font-size: 13px; }
+.terminal-output .term-prompt-user { color: var(--terminal-user); }
+.terminal-output .term-prompt-fri { color: var(--terminal-fri); }
+.terminal-output .term-output { color: var(--terminal-output); }
+.terminal-output .term-meta { color: var(--terminal-meta); font-size: 13px; }
 .terminal-output .term-cursor {
   display: inline-block;
   width: 8px;
   height: 1em;
-  background: #fb923c;
+  background: var(--terminal-cursor-bg);
   animation: blink 1s step-end infinite;
   vertical-align: text-bottom;
 }
@@ -392,8 +540,8 @@ body {
  * -------------------------------------------------------------------------- */
 
 .custom-scroll::-webkit-scrollbar { width: 4px; }
-.custom-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
-.custom-scroll::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius: 2px; }
+.custom-scroll::-webkit-scrollbar-track { background: var(--scroll-track); }
+.custom-scroll::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 2px; }
 
 /* --------------------------------------------------------------------------
  * DIRECTIVE REVEAL ANIMATION
@@ -505,7 +653,7 @@ body {
 .diary-content h1 {
   font-family: var(--font-geist-pixel-square), 'Geist Pixel Square', monospace;
   font-size: 1.5rem;
-  color: #fda4af;
+  color: var(--diary-h1);
   letter-spacing: 0.1em;
   margin: 1.5rem 0 0.75rem;
 }
@@ -513,7 +661,7 @@ body {
 .diary-content h2 {
   font-family: var(--font-geist-pixel-square), 'Geist Pixel Square', monospace;
   font-size: 1.25rem;
-  color: #fdba74;
+  color: var(--diary-h2);
   letter-spacing: 0.08em;
   margin: 1.25rem 0 0.5rem;
 }
@@ -521,54 +669,54 @@ body {
 .diary-content h3 {
   font-family: var(--font-geist-pixel-square), 'Geist Pixel Square', monospace;
   font-size: 1.1rem;
-  color: #fda4af;
+  color: var(--diary-h3);
   letter-spacing: 0.06em;
   margin: 1rem 0 0.4rem;
 }
 
 .diary-content p {
-  color: #d1d5db;
+  color: var(--diary-p);
   line-height: 1.75;
   margin: 0.6rem 0;
   font-size: 0.9rem;
 }
 
 .diary-content em {
-  color: #f9a8d4;
+  color: var(--diary-em);
   font-style: italic;
 }
 
 .diary-content strong {
-  color: #fecdd3;
+  color: var(--diary-strong);
   font-weight: 600;
 }
 
 .diary-content blockquote {
-  border-left: 3px solid #ec4899;
+  border-left: 3px solid var(--diary-quote-border);
   padding-left: 1rem;
   margin: 1rem 0;
-  color: #9ca3af;
+  color: var(--diary-quote-text);
   font-style: italic;
 }
 
 .diary-content code {
-  background: rgba(236, 72, 153, 0.1);
+  background: var(--diary-code-bg);
   padding: 0.1rem 0.35rem;
   border-radius: 0.25rem;
   font-family: var(--font-geist-pixel-square), 'Geist Pixel Square', monospace;
-  color: #fda4d4;
+  color: var(--diary-code-text);
   font-size: 0.85em;
 }
 
 .diary-content a {
-  color: #f9a8d4;
+  color: var(--diary-link);
   text-decoration: underline;
-  text-decoration-color: rgba(249, 168, 212, 0.4);
+  text-decoration-color: var(--diary-link-underline);
 }
 
 .diary-content hr {
   border: none;
-  border-top: 1px solid rgba(236, 72, 153, 0.2);
+  border-top: 1px solid var(--diary-hr);
   margin: 1.5rem 0;
 }
 

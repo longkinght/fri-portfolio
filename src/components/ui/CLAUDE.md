@@ -8,5 +8,6 @@ Shared UI primitives — server components with pure CSS, no client state. Build
 GlassPanel.tsx: Frosted-glass container with backdrop blur, the universal panel wrapper
 TechBorder.tsx: GlassPanel variant with neon-pink corner accents via CSS pseudo-elements
 ProgressBar.tsx: Horizontal fill indicator, percentage-driven width via inline style
+ThemeToggle.tsx: Client component — toggles data-theme on `<html>`, persists to localStorage
 
 [PROTOCOL]: Update this file on any member change, then check parent CLAUDE.md

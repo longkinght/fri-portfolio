@@ -19,8 +19,7 @@ const FONT_SIZE = 11;
 const LINE_HEIGHT = 15;
 const SCROLL_SPEED = 0.12;
 const CIRCLE_PADDING = 28;
-const TEXT_COLOR = "rgba(236, 72, 153, 0.12)";
-const BRIGHT_COLOR = "rgba(236, 72, 153, 0.30)";
+/* colors read from CSS vars at draw time */
 const BRIGHT_CHANCE = 0.015;
 const FONT_SPEC = `${FONT_SIZE}px "Zpix", "Geist Pixel Square", monospace`;
 
@@ -159,13 +158,17 @@ export function MatrixRain({ fragments, circle }: Props) {
 
     const lines = buildLines(prepared, w, h, cx, cy, r, offsetRef.current);
 
+    const styles = getComputedStyle(document.documentElement);
+    const textColor = styles.getPropertyValue('--matrix-text').trim() || "rgba(236,72,153,0.10)";
+    const brightColor = styles.getPropertyValue('--matrix-bright').trim() || "rgba(236,72,153,0.19)";
+
     for (const line of lines) {
       if (line.y < -LINE_HEIGHT || line.y > h + LINE_HEIGHT) continue;
 
       const fadeTop = Math.max(0, Math.min(1, line.y / 60));
       const fadeBottom = Math.max(0, Math.min(1, (h - line.y) / 60));
       ctx.globalAlpha = Math.min(fadeTop, fadeBottom);
-      ctx.fillStyle = line.bright ? BRIGHT_COLOR : TEXT_COLOR;
+      ctx.fillStyle = line.bright ? brightColor : textColor;
       ctx.fillText(line.text, line.x, line.y);
     }
 
