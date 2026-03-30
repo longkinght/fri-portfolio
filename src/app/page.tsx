@@ -8,15 +8,17 @@
 
 import { SystemHeader } from "@/components/home/SystemHeader";
 import { IdentityMatrix } from "@/components/home/IdentityMatrix";
-import { ActiveModules } from "@/components/home/ActiveModules";
+import { WidgetPanel } from "@/components/home/WidgetPanel";
 import ArcReactor from "@/components/home/ArcReactor";
 import { Terminal } from "@/components/home/Terminal";
 import { Diagnostics } from "@/components/home/Diagnostics";
 import { CoreDirectives } from "@/components/home/CoreDirectives";
 import { getSiteStats } from "@/lib/stats";
+import { getEntries } from "@/lib/content";
 
-export default function Home() {
+export default async function Home() {
   const stats = getSiteStats();
+  const weeklyEntries = await getEntries("weekly");
 
   return (
     <div className="flex flex-col overflow-hidden h-screen w-screen">
@@ -38,7 +40,7 @@ export default function Home() {
               weeklyCount={stats.weeklyCount}
               lastEntryAge={stats.lastEntryAge}
             />
-            <ActiveModules />
+            <WidgetPanel weeklyEntries={weeklyEntries.map(({ slug, title, date, summary, cover }) => ({ slug, title, date, summary, cover }))} />
           </div>
 
           <div
