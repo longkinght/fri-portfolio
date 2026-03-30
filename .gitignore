@@ -3,3 +3,4 @@ node_modules/
 .superpowers/
 .cache/
 next-env.d.ts
+.vercel
