@@ -114,22 +114,32 @@ export function CoreDirectives() {
         </div>
       </div>
 
-      {/* ---- Footer: WEEKLY + social links ---- */}
-      <div className="mt-4 pt-4 border-t border-pink-500/25">
-        <div className="flex justify-between items-center gap-4 flex-wrap">
-          <div className="flex gap-2 md:gap-3">
-            <Link
-              href="/weekly"
-              className="px-3 py-2 min-h-[44px] flex items-center justify-center font-vt323 text-xs tracking-widest text-orange-200/90 border border-orange-300/30 hover:border-orange-300/60 hover:text-white transition-all rounded-sm bg-orange-500/5 hover:bg-orange-500/10"
-              aria-label="Weekly"
+      {/* ---- Footer: social links ---- */}
+      <div className="mt-4 pt-3 border-t border-pink-500/25">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-1.5">
+            <a
+              href="https://z1han.com"
+              target="_blank"
+              rel="noopener"
+              className="font-tech text-xs text-pink-700 hover:text-white transition-colors py-1 flex items-center"
             >
-              WEEKLY
+              @z1han
+            </a>
+            <Link
+              href="/diary"
+              className="font-vt323 text-[11px] text-pink-800/50 hover:text-pink-400/80 transition-colors"
+              aria-label="日记"
+            >
+              日记
             </Link>
+          </div>
+          <div className="flex gap-1">
             <a
               href="https://github.com/bravohenry"
               target="_blank"
               rel="noopener"
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-pink-500 hover:text-white transition-all rounded"
+              className="p-1.5 text-pink-500 hover:text-white transition-all"
               aria-label="GitHub"
             >
               <img
@@ -143,7 +153,7 @@ export function CoreDirectives() {
               href="https://discord.gg/clawd"
               target="_blank"
               rel="noopener"
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-pink-500 hover:text-white transition-all rounded"
+              className="p-1.5 text-pink-500 hover:text-white transition-all"
               aria-label="Discord"
             >
               <img
@@ -157,7 +167,7 @@ export function CoreDirectives() {
               href="https://docs.molt.bot"
               target="_blank"
               rel="noopener"
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-pink-500 hover:text-white transition-all rounded"
+              className="p-1.5 text-pink-500 hover:text-white transition-all"
               aria-label="Docs"
             >
               <img
@@ -167,23 +177,6 @@ export function CoreDirectives() {
                 aria-hidden="true"
               />
             </a>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <a
-              href="https://z1han.com"
-              target="_blank"
-              rel="noopener"
-              className="font-tech text-xs text-pink-700 hover:text-white transition-colors py-2 min-h-[44px] flex items-center"
-            >
-              @z1han
-            </a>
-            <Link
-              href="/diary"
-              className="font-vt323 text-[11px] text-pink-800/50 hover:text-pink-400/80 transition-colors"
-              aria-label="日记"
-            >
-              日记
-            </Link>
           </div>
         </div>
       </div>
