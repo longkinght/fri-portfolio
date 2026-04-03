@@ -55,11 +55,11 @@ function getRandomPath(): string {
 
 function buildSlashReplies(s: SiteStats): Record<string, string> {
   return {
-    help: "命令: /latest 最新文章 | /stats 统计 | /random 随机 | /about 关于",
-    latest: `最新: [${s.lastEntryDate}] ${s.lastEntryAge} | See /diary or /weekly for full archive.`,
-    stats: `${s.totalEntries} entries. ${formatWords(s.totalWords)} words. ${s.天SinceLaunch} 天 online. ${s.thisWeekCount} posts this week.`,
+    help: "命令: /latest 最新 | /stats 统计 | /random 随机 | /about 关于",
+    latest: `最新: [${s.lastEntryDate}] ${s.lastEntryAge} | 查看 /diary 或 /weekly`,
+    stats: `${s.totalEntries} 篇文章. ${formatWords(s.totalWords)} 字. 运行 ${s.daysSinceLaunch} 天. 本周 ${s.thisWeekCount} 篇.`,
     about: "黄老师进化营 — AI 教育实践平台。每日思考 + 每周精选。用 AI 在实践中持续进化。",
-    status: `${s.totalEntries} 篇文章已收录. ${s.cachedUrls} link previews cached. Deploy: Vercel. 所有系统正常运行.`,
+    status: `${s.totalEntries} 篇已收录. ${s.cachedUrls} 个链接预览. 部署: Vercel. 所有系统正常运行.`,
   };
 }
 
@@ -69,12 +69,12 @@ function buildInitialLines(s: SiteStats): Line[] {
     { type: "user", text: "status" },
     {
       type: "output",
-      text: `黄老师: 所有系统正常运行. ${s.totalEntries} 篇文章已收录, ${formatWords(s.totalWords)} 字已处理. 运行: ${s.天SinceLaunch} 天.`,
+      text: `Friday: All systems nominal. ${s.totalEntries} entries indexed, ${formatWords(s.totalWords)} words processed. Uptime: ${s.daysSinceLaunch} days.`,
     },
     { type: "user", text: "help" },
     {
       type: "output",
-      text: "黄老师: /latest — recent entries | /stats — site metrics | /random — surprise me | Or just talk to me.",
+      text: "黄老师: /latest 最新 | /stats 统计 | /random 随机 | 或直接对话",
     },
   ];
 }
@@ -154,16 +154,16 @@ export function Terminal({ stats }: TerminalProps) {
 
       if (cmd === "random") {
         const path = getRandomPath();
-        reply = `黄老师: Navigating to ${path}...`;
+        reply = `黄老师: 正在跳转 ${path}...`;
         navigateTo = path;
       } else if (cmd === "latest") {
         reply = "黄老师: " + slashReplies.latest;
         navigateTo = "/weekly";
       } else if (cmd === "diary") {
-        reply = "黄老师: Opening diary...";
+        reply = "黄老师: 打开日记...";
         navigateTo = "/diary";
       } else if (cmd === "weekly") {
-        reply = "黄老师: Opening weekly archive...";
+        reply = "黄老师: 打开周刊...";
         navigateTo = "/weekly";
       } else if (slashReplies[cmd]) {
         reply = "黄老师: " + slashReplies[cmd];
@@ -207,7 +207,7 @@ export function Terminal({ stats }: TerminalProps) {
 
         if (!res.ok) {
           const errText = await res.text();
-          const fallback = `黄老师: [Error ${res.status}] ${errText.slice(0, 100)}`;
+          const fallback = `黄老师: [错误 ${res.status}] ${errText.slice(0, 100)}`;
           setStreamingText(null);
           setLines((prev) => [...prev, { type: "output", text: fallback }]);
           setBusy(false);
@@ -230,7 +230,7 @@ export function Terminal({ stats }: TerminalProps) {
         setStreamingText(null);
         setLines((prev) => [
           ...prev,
-          { type: "output", text: "黄老师: 连接中断." },
+          { type: "output", text: "黄老师: 连接中断。" },
         ]);
       } finally {
         setBusy(false);
@@ -281,7 +281,7 @@ export function Terminal({ stats }: TerminalProps) {
       case "user":
         return (
           <div key={i} className="mb-1">
-            <span className="term-prompt-user">黄老师进化营&gt; </span>{" "}
+            <span className="term-prompt-user">黄老师></span>{" "}
             {line.text}
           </div>
         );
@@ -341,7 +341,7 @@ export function Terminal({ stats }: TerminalProps) {
           {/* Idle cursor prompt */}
           {streamingText === null && (
             <div className="mt-2">
-              <span className="term-prompt-fri">fri&gt;</span>{" "}
+              <span className="term-prompt-fri">&gt;</span>{" "}
               <span className="term-cursor" aria-hidden="true" />
             </div>
           )}
