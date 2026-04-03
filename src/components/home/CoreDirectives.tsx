@@ -86,7 +86,7 @@ export function CoreDirectives() {
           <div className="flex items-center gap-3 mb-1">
             <div className="w-1.5 h-1.5 rotate-45 transition-colors" style={{ background: 'var(--bg-diamond-orange)' }} />
             <h3 className="text-xs font-bold font-vt323 uppercase tracking-wide" style={{ color: 'var(--text-orange-title)' }}>
-              真实 > 完美
+              真实 &gt; 完美
             </h3>
           </div>
           <p className="text-[11px] leading-relaxed pl-4" style={{ color: 'var(--text-orange-body)' }}>
