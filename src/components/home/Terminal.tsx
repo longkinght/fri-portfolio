@@ -281,7 +281,7 @@ export function Terminal({ stats }: TerminalProps) {
       case "user":
         return (
           <div key={i} className="mb-1">
-            <span className="term-prompt-user">黄老师进化营> </span>{" "}
+            <span className="term-prompt-user">黄老师进化营&gt; </span>{" "}
             {line.text}
           </div>
         );
