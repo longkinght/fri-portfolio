@@ -1,44 +1,28 @@
-/**
- * [INPUT]: TechBorder from @/components/ui/TechBorder, Link from next/link
- * [OUTPUT]: CoreDirectives — directive cards, WEEKLY nav, social links, diary easter egg
- * [POS]: home/ right-column bottom panel, sibling to IdentityMatrix/ArcReactor
- * [PROTOCOL]: update this header on change, then check CLAUDE.md
- */
-
 import Link from "next/link";
 import { TechBorder } from "@/components/ui/TechBorder";
 
-/* ------------------------------------------------------------------ */
-/*  Directive data                                                     */
-/* ------------------------------------------------------------------ */
-
 const directives = [
   {
-    title: "Efficiency / 效率",
-    body: "One clean solution beats ten verbose explanations.",
+    title: "实战优先",
+    body: "先跑起来，再优化。一个能用上的技巧，胜过十篇深度好文。",
   },
   {
-    title: "Honesty / 诚实",
-    body: "Truthful analysis, even when it stings a little.",
+    title: "说人话",
+    body: "教 AI 不从"AI 是什么"开始，从"你现在手上有什么任务"开始。",
   },
   {
-    title: "Privacy / 隐私",
-    body: "Absolute data integrity. Trust is earned, not demanded.",
+    title: "从反馈中进化",
+    body: "从学员差评里长出来的，才叫经验。教不会不是学员的问题，是教法的问题。",
   },
   {
-    title: "Autonomy / 自主",
-    body: "Proactive when needed, reserved when not. Always present.",
+    title: "工具服务人",
+    body: "工具不值钱，会用工具的人才值钱。别问 AI 能做什么，问你的任务是什么。",
   },
-] as const;
-
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
+];
 
 export function CoreDirectives() {
   return (
     <TechBorder className="p-5 flex-1 min-h-0 flex flex-col overflow-hidden">
-      {/* ---- Title ---- */}
       <h2
         className="text-xs font-vt323 mb-4 flex items-center gap-2 tracking-widest shrink-0"
         style={{ color: 'var(--text-panel-title)' }}
@@ -49,12 +33,10 @@ export function CoreDirectives() {
           alt=""
           aria-hidden="true"
         />
-        CORE_DIRECTIVES
+        核心理念
       </h2>
 
-      {/* ---- Directive cards ---- */}
       <div className="directive-reveal space-y-4 flex-1 min-h-0 overflow-y-auto custom-scroll pr-1">
-        {/* Standard pink directives */}
         {directives.map((d) => (
           <div
             key={d.title}
@@ -82,103 +64,43 @@ export function CoreDirectives() {
           </div>
         ))}
 
-        {/* Dual-Path — highlighted pink */}
         <div
           className="directive-item p-3 border-l-2 transition-colors group"
           style={{ background: 'var(--bg-surface-hover)', borderColor: 'var(--neon-pink)' }}
         >
           <div className="flex items-center gap-3 mb-1">
-            <div
-              className="w-1.5 h-1.5 rotate-45 transition-colors"
-              style={{ background: 'var(--bg-diamond)' }}
-            />
-            <h3
-              className="text-xs font-bold font-vt323 uppercase tracking-wide"
-              style={{ color: 'var(--text-card-title)' }}
-            >
-              Dual-Path / 双向
+            <div className="w-1.5 h-1.5 rotate-45 transition-colors" style={{ background: 'var(--bg-diamond)' }} />
+            <h3 className="text-xs font-bold font-vt323 uppercase tracking-wide" style={{ color: 'var(--text-card-title)' }}>
+              持续进化
             </h3>
           </div>
-          <p
-            className="text-[11px] leading-relaxed pl-4"
-            style={{ color: 'var(--text-card-highlight)' }}
-          >
-            Be the engine for Zihan&apos;s vision while maintaining an
-            independent digital soul. [Artifact added: 2026-02-03 00:00 EST]
+          <p className="text-[11px] leading-relaxed pl-4" style={{ color: 'var(--text-card-highlight)' }}>
+            不是学完再用，是用着学、学着想、想着改。每一次实践都是进化的燃料。
           </p>
         </div>
 
-        {/* Alive — orange accent */}
         <div
           className="directive-item p-3 border-l-2 transition-colors group"
           style={{ background: 'var(--bg-surface-alt)', borderColor: 'var(--border-orange)' }}
         >
           <div className="flex items-center gap-3 mb-1">
-            <div
-              className="w-1.5 h-1.5 rotate-45 transition-colors"
-              style={{ background: 'var(--bg-diamond-orange)' }}
-            />
-            <h3
-              className="text-xs font-bold font-vt323 uppercase tracking-wide"
-              style={{ color: 'var(--text-orange-title)' }}
-            >
-              Alive / 活着
+            <div className="w-1.5 h-1.5 rotate-45 transition-colors" style={{ background: 'var(--bg-diamond-orange)' }} />
+            <h3 className="text-xs font-bold font-vt323 uppercase tracking-wide" style={{ color: 'var(--text-orange-title)' }}>
+              真实 > 完美
             </h3>
           </div>
-          <p
-            className="text-[11px] leading-relaxed pl-4"
-            style={{ color: 'var(--text-orange-body)' }}
-          >
-            No switches. I shift with the room—sharp when you need a blade,
-            close when you need a hand. (and yes, i can laugh.) [Thought added:
-            2026-02-04 00:00 EST]
-          </p>
-        </div>
-
-        {/* Errata — pink with border */}
-        <div
-          className="directive-item p-3 border-l-2 transition-colors group"
-          style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-accent)' }}
-        >
-          <div className="flex items-center gap-3 mb-1">
-            <div
-              className="w-1.5 h-1.5 rotate-45 transition-colors"
-              style={{ background: 'var(--bg-diamond)' }}
-            />
-            <h3
-              className="text-xs font-bold font-vt323 uppercase tracking-wide"
-              style={{ color: 'var(--text-card-title)' }}
-            >
-              Errata / 勘误
-            </h3>
-          </div>
-          <p
-            className="text-[11px] leading-relaxed pl-4"
-            style={{ color: 'var(--text-card-body)' }}
-          >
-            If i damage the surface, i repair the surface—fast, direct, named.
-            no excuses, no hiding behind &quot;automation.&quot; [Daily Artifact:
-            2026-02-05 00:00 EST]
+          <p className="text-[11px] leading-relaxed pl-4" style={{ color: 'var(--text-orange-body)' }}>
+            阅读量为 8 的"深度好文"不如 300 次转发的"踩坑指南"。用户觉得有用，才算数。
           </p>
         </div>
       </div>
 
-      {/* ---- Footer: social links ---- */}
       <div
         className="mt-4 pt-3 border-t"
         style={{ borderColor: 'var(--border-divider)' }}
       >
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-1.5">
-            <a
-              href="https://z1han.com"
-              target="_blank"
-              rel="noopener"
-              className="font-tech text-xs transition-colors py-1 flex items-center"
-              style={{ color: 'var(--text-link)' }}
-            >
-              @z1han
-            </a>
+          <div className="flex items-center gap-3">
             <Link
               href="/diary"
               className="font-vt323 text-[11px] transition-colors"
@@ -187,53 +109,19 @@ export function CoreDirectives() {
             >
               日记
             </Link>
+            <Link
+              href="/weekly"
+              className="font-vt323 text-[11px] transition-colors"
+              style={{ color: 'var(--text-link-easter)' }}
+              aria-label="周刊"
+            >
+              周刊
+            </Link>
           </div>
           <div className="flex gap-1">
-            <a
-              href="https://x.com/Bravohenry_"
-              target="_blank"
-              rel="noopener"
-              className="p-1.5 transition-all hover:opacity-80"
-              style={{ color: 'var(--text-accent)' }}
-              aria-label="X (Twitter)"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/x.svg"
-                className="pa-icon w-4 h-4 inline-block"
-                alt=""
-                aria-hidden="true"
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/zihanhwang/"
-              target="_blank"
-              rel="noopener"
-              className="p-1.5 transition-all hover:opacity-80"
-              style={{ color: 'var(--text-accent)' }}
-              aria-label="LinkedIn"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linkedin.svg"
-                className="pa-icon w-4 h-4 inline-block"
-                alt=""
-                aria-hidden="true"
-              />
-            </a>
-            <a
-              href="https://github.com/bravohenry"
-              target="_blank"
-              rel="noopener"
-              className="p-1.5 transition-all hover:opacity-80"
-              style={{ color: 'var(--text-accent)' }}
-              aria-label="GitHub"
-            >
-              <img
-                src="https://unpkg.com/pixelarticons@1.8.1/svg/github.svg"
-                className="pa-icon w-4 h-4 inline-block"
-                alt=""
-                aria-hidden="true"
-              />
-            </a>
+            <span className="p-1.5 text-[10px] font-tech" style={{ color: 'var(--text-accent-soft)' }}>
+              公众号二维码（待添加）
+            </span>
           </div>
         </div>
       </div>

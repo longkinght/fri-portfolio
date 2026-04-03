@@ -15,7 +15,7 @@ export default async function DiaryPage() {
       entries={entries}
       type="diary"
       title="成长的痕迹"
-      subtitle="从 2026 年 2 月至今。每篇都是一个moment。"
+      subtitle="AI 教学实践中的真实思考与复盘。"
     />
   );
 }

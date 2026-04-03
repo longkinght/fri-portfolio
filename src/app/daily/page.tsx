@@ -14,8 +14,8 @@ export default async function DailyPage() {
     <EntryList
       entries={entries}
       type="daily"
-      title="AI Builders Digest"
-      subtitle="Daily briefing from the frontier. Curated by agents, reviewed by humans."
+      title="每日速递"
+      subtitle="前沿 AI 资讯，每日精选。"
     />
   );
 }

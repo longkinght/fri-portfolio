@@ -55,26 +55,26 @@ function getRandomPath(): string {
 
 function buildSlashReplies(s: SiteStats): Record<string, string> {
   return {
-    help: "Commands: /latest, /stats, /random, /about. Or just talk to me.",
-    latest: `Recent: [${s.lastEntryDate}] ${s.lastEntryAge} | See /diary or /weekly for full archive.`,
-    stats: `${s.totalEntries} entries. ${formatWords(s.totalWords)} words. ${s.daysSinceLaunch} days online. ${s.thisWeekCount} posts this week.`,
-    about: "FRI — a portfolio and content platform. Diary (Chinese, personal). Weekly (English, design engineering). Built with Next.js, deployed on Vercel.",
-    status: `${s.totalEntries} entries indexed. ${s.cachedUrls} link previews cached. Deploy: Vercel. All systems nominal.`,
+    help: "命令: /latest 最新文章 | /stats 统计 | /random 随机 | /about 关于",
+    latest: `最新: [${s.lastEntryDate}] ${s.lastEntryAge} | See /diary or /weekly for full archive.`,
+    stats: `${s.totalEntries} entries. ${formatWords(s.totalWords)} words. ${s.天SinceLaunch} 天 online. ${s.thisWeekCount} posts this week.`,
+    about: "黄老师进化营 — AI 教育实践平台。每日思考 + 每周精选。用 AI 在实践中持续进化。",
+    status: `${s.totalEntries} 篇文章已收录. ${s.cachedUrls} link previews cached. Deploy: Vercel. 所有系统正常运行.`,
   };
 }
 
 function buildInitialLines(s: SiteStats): Line[] {
   return [
-    { type: "meta", text: "# FRI system initialized" },
+    { type: "meta", text: "# 系统启动完成" },
     { type: "user", text: "status" },
     {
       type: "output",
-      text: `Friday: All systems nominal. ${s.totalEntries} entries indexed, ${formatWords(s.totalWords)} words processed. Uptime: ${s.daysSinceLaunch} days.`,
+      text: `黄老师: 所有系统正常运行. ${s.totalEntries} 篇文章已收录, ${formatWords(s.totalWords)} 字已处理. 运行: ${s.天SinceLaunch} 天.`,
     },
     { type: "user", text: "help" },
     {
       type: "output",
-      text: "Friday: /latest — recent entries | /stats — site metrics | /random — surprise me | Or just talk to me.",
+      text: "黄老师: /latest — recent entries | /stats — site metrics | /random — surprise me | Or just talk to me.",
     },
   ];
 }
@@ -154,19 +154,19 @@ export function Terminal({ stats }: TerminalProps) {
 
       if (cmd === "random") {
         const path = getRandomPath();
-        reply = `Friday: Navigating to ${path}...`;
+        reply = `黄老师: Navigating to ${path}...`;
         navigateTo = path;
       } else if (cmd === "latest") {
-        reply = "Friday: " + slashReplies.latest;
+        reply = "黄老师: " + slashReplies.latest;
         navigateTo = "/weekly";
       } else if (cmd === "diary") {
-        reply = "Friday: Opening diary...";
+        reply = "黄老师: Opening diary...";
         navigateTo = "/diary";
       } else if (cmd === "weekly") {
-        reply = "Friday: Opening weekly archive...";
+        reply = "黄老师: Opening weekly archive...";
         navigateTo = "/weekly";
       } else if (slashReplies[cmd]) {
-        reply = "Friday: " + slashReplies[cmd];
+        reply = "黄老师: " + slashReplies[cmd];
       } else {
         return false; // not a known slash command — send to AI
       }
@@ -207,7 +207,7 @@ export function Terminal({ stats }: TerminalProps) {
 
         if (!res.ok) {
           const errText = await res.text();
-          const fallback = `Friday: [Error ${res.status}] ${errText.slice(0, 100)}`;
+          const fallback = `黄老师: [Error ${res.status}] ${errText.slice(0, 100)}`;
           setStreamingText(null);
           setLines((prev) => [...prev, { type: "output", text: fallback }]);
           setBusy(false);
@@ -217,10 +217,10 @@ export function Terminal({ stats }: TerminalProps) {
         let full = "";
         for await (const token of parseSSE(res)) {
           full += token;
-          setStreamingText("Friday: " + full);
+          setStreamingText("黄老师: " + full);
         }
 
-        const finalText = "Friday: " + (full || "...");
+        const finalText = "黄老师: " + (full || "...");
         historyRef.current.push({ role: "assistant", content: full });
 
         setStreamingText(null);
@@ -230,7 +230,7 @@ export function Terminal({ stats }: TerminalProps) {
         setStreamingText(null);
         setLines((prev) => [
           ...prev,
-          { type: "output", text: "Friday: Connection interrupted." },
+          { type: "output", text: "黄老师: 连接中断." },
         ]);
       } finally {
         setBusy(false);
@@ -281,7 +281,7 @@ export function Terminal({ stats }: TerminalProps) {
       case "user":
         return (
           <div key={i} className="mb-1">
-            <span className="term-prompt-user">zihan@fri:~$</span>{" "}
+            <span className="term-prompt-user">黄老师进化营> </span>{" "}
             {line.text}
           </div>
         );
@@ -352,7 +352,7 @@ export function Terminal({ stats }: TerminalProps) {
       <div className="relative mt-3">
         {/* label sits on the border line */}
         <span className="absolute -top-[7px] left-3 px-1.5 text-[9px] font-vt323 tracking-widest z-10" style={{ color: 'var(--text-accent-soft)', background: 'var(--bg-panel)' }}>
-          COMMAND INPUT
+          命令输入
         </span>
         <div className="flex items-center transition-colors" style={{ border: '1px solid var(--border-accent)', background: 'var(--bg-input)' }}>
           <span className="pl-3 text-xs font-vt323 text-neon-coral/50 select-none shrink-0">
@@ -363,7 +363,7 @@ export function Terminal({ stats }: TerminalProps) {
             type="text"
             className="flex-1 bg-transparent font-vt323 text-sm py-3 px-2 focus:outline-none"
             style={{ color: 'var(--text-input)' }}
-            placeholder={busy ? "Friday is thinking..." : "type /help or talk to Friday"}
+            placeholder={busy ? "思考中..." : "输入 /help 或直接对话"}
             autoComplete="off"
             disabled={busy}
             value={input}

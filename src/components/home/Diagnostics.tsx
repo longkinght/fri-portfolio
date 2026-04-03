@@ -47,10 +47,10 @@ export function Diagnostics({
   const [hovered, setHovered] = useState<number | null>(null);
 
   const services = [
-    { name: "DIARY", status: `${diaryCount} entries` },
-    { name: "WEEKLY", status: `${weeklyCount} entries` },
-    { name: "LINK_PREVIEW", status: `CACHED (${cachedUrls})` },
-    { name: "DEPLOY", status: "VERCEL" },
+    { name: "日记", status: `${diaryCount} 篇` },
+    { name: "周刊", status: `${weeklyCount} 篇` },
+    { name: "链接预览", status: `CACHED (${cachedUrls})` },
+    { name: "部署", status: "VERCEL" },
   ];
 
   const hoveredDay = hovered !== null ? dailyActivity[hovered] : null;
@@ -68,7 +68,7 @@ export function Diagnostics({
           alt=""
           aria-hidden="true"
         />
-        DIAGNOSTICS
+        数据面板
       </h2>
 
       {/* Stat boxes */}
@@ -78,7 +78,7 @@ export function Diagnostics({
             className="text-[10px] uppercase mb-1.5"
             style={{ color: 'var(--text-muted)' }}
           >
-            This Week
+            本周
           </div>
           <div
             className="text-xl font-bold font-vt323"
@@ -92,7 +92,7 @@ export function Diagnostics({
             className="text-[10px] uppercase mb-1.5"
             style={{ color: 'var(--text-muted)' }}
           >
-            This Month
+            本月
           </div>
           <div
             className="text-xl font-bold font-vt323"
@@ -131,8 +131,8 @@ export function Diagnostics({
           style={{ color: 'var(--bar-label)' }}
         >
           {hoveredDay
-            ? `${formatDate(hoveredDay.date)} · ${hoveredDay.count} ${hoveredDay.count === 1 ? "entry" : "entries"}`
-            : "PUBLISHING FREQUENCY"}
+            ? `${formatDate(hoveredDay.date)} · ${hoveredDay.count} ${hoveredDay.count === 1 ? "篇" : "篇"}`
+            : "发布频率"}
         </div>
       </div>
 

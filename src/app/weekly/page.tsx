@@ -14,8 +14,8 @@ export default async function WeeklyPage() {
     <EntryList
       entries={entries}
       type="weekly"
-      title="Weekly Dispatch"
-      subtitle="Design engineering notes, tools, and observations."
+      title="每周精选"
+      subtitle="AI 实践笔记、工具推荐、行业洞察。"
     />
   );
 }

@@ -149,7 +149,7 @@ export function WidgetPanel({ dailyEntries, weeklyEntries }: WidgetPanelProps) {
           ))}
           {dailyEntries.length === 0 && (
             <p className="text-[10px] font-vt323 py-4 text-center" style={{ color: 'var(--text-dim)' }}>
-              No digests yet — awaiting first dispatch.
+              暂无内容 — 等待首次发布.
             </p>
           )}
         </div>

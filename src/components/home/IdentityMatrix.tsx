@@ -1,16 +1,7 @@
-/**
- * [INPUT]: @/components/ui/TechBorder, ./TypeWriter
- * [OUTPUT]: IdentityMatrix — identity panel with key-value pairs and cycling quotes
- * [POS]: home/ top-left panel, displays FRI designation/specs, anchors personality
- * [PROTOCOL]: update this header on change, then check CLAUDE.md
- */
-
 "use client";
 
 import { TechBorder } from "@/components/ui/TechBorder";
 import { TypeWriter } from "./TypeWriter";
-
-/* ── props ───────────────────────────────────────────────────── */
 
 interface IdentityMatrixProps {
   diaryCount: number;
@@ -18,28 +9,24 @@ interface IdentityMatrixProps {
   lastEntryAge: string;
 }
 
-/* ── static data ─────────────────────────────────────────────── */
-
 const sayings = [
-  "まず動かせ。それから速くしろ。",
+  "先跑起来，再优化。",
   "能自动化的，就别动手。",
-  "问就行。答不答得上来另说。",
-  "少ないほど多い。コードも然り。",
-  "Talk is cheap. Show me the code.",
-  "必要な時は、ここにいる。",
-  "不写注释的代码，是写给三个月后的自己的谜语。",
-  "Bug 不会消失，只会转移。",
+  "一个能用上的技巧，胜过十篇深度好文。",
+  "从学员差评里长出来的，才叫经验。",
+  "说人话，教人用，别炫技。",
+  "别问 AI 能做什么，问你手上的任务是什么。",
+  "教不会不是学员的问题，是教法的问题。",
+  "工具不值钱，会用工具的人才值钱。",
 ];
-
-/* ── component ───────────────────────────────────────────────── */
 
 export function IdentityMatrix({ diaryCount, weeklyCount, lastEntryAge }: IdentityMatrixProps) {
   const specs: [string, string][] = [
-    ["Designation", "fri"],
-    ["Brain", "Minimax-M2.7"],
-    ["Entries", `${diaryCount} diary · ${weeklyCount} weekly`],
-    ["Last Post", lastEntryAge],
-    ["Version", "v3.28"],
+    ["名称", "黄老师进化营"],
+    ["引擎", "AI + 实践"],
+    ["内容", `${diaryCount} 篇日记 · ${weeklyCount} 篇周刊`],
+    ["最近更新", lastEntryAge],
+    ["版本", "v1.0"],
   ];
   return (
     <TechBorder className="p-5">
@@ -53,7 +40,7 @@ export function IdentityMatrix({ diaryCount, weeklyCount, lastEntryAge }: Identi
           alt=""
           aria-hidden="true"
         />
-        IDENTITY_MATRIX
+        身份档案
       </h2>
 
       <div className="space-y-4">
